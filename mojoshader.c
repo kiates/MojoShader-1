@@ -310,7 +310,7 @@ static inline void out_of_memory(Context *ctx)
 static inline void *Malloc(Context *ctx, const size_t len)
 {
     void *retval = ctx->malloc((int) len, ctx->malloc_data);
-    if (retval == NULL)
+    if (retval == NULL && len > 0)
         out_of_memory(ctx);
     return retval;
 } // Malloc
